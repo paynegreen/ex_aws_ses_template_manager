@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="[scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "ExAwsSesTemplateManager" %>
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/editor/editor.main.min.css"
+      integrity="sha512-eubffMYOzstZjQgYykD480h5N6jKsfDjRxHz1IjdZoaPkXZZnWr2WT/QDr+k35b2tUbafYWlM1gkgD4UOOtuTw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs' } }
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"
+      integrity="sha512-ZG31AN9z/CQD1YDDAK4RUAvogwbJHv6bHrumrnMLzdCrVu4HeAqrUX7Jsal/cbUwXGfaMUNmQU04tQ8XXl5Znw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/editor/editor.main.nls.min.js"
+      integrity="sha512-uye2SX2ZylUu0MEsELOhLwMDnBwYXB6JvN1VFZD3x+bHsrOgzsLCUmh7kS2x92YLg85i+ekKFTpNl/r/FzbZ5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/editor/editor.main.min.js"
+      integrity="sha512-0TNsCX1PYmaoShDBeAEshMz/t3jBu/gLwQbzjAyiRPkS87tOxyZFwZ/POhpu4tlCOdzL8Zv6w/f9LXzJ2SPZwg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    </script>
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+    <script async defer src="https://buttons.github.io/buttons.js">
+    </script>
+  </head>
+  <body class="bg-white antialiased">
+    <%= @inner_content %>
+  </body>
+</html>

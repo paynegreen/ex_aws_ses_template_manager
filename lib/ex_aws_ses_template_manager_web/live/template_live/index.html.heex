@@ -1,0 +1,44 @@
+<div :if={@live_action == :index}>
+  <.button phx-click={JS.navigate(~p"/new")}>Create New</.button>
+  <.table id="template" rows={@templates}>
+    <:col :let={template} label="Name"><%= template.template_name %></:col>
+    <:col :let={template} label="Created Timestamp"><%= template.created_timestamp %></:col>
+    <:col :let={template}>
+      <div>
+        <.button><.icon name="hero-magnifying-glass" /></.button>
+        <.button phx-click={JS.navigate(~p"/#{template.template_name}")}>
+          <.icon name="hero-pencil" />
+        </.button>
+        <.button
+          data-confirm="Are you sure?"
+          phx-click="delete"
+          phx-value-id={template.template_name}
+        >
+          <.icon name="hero-trash" />
+        </.button>
+      </div>
+    </:col>
+  </.table>
+</div>
+
+<div :if={@live_action in [:new, :edit]}>
+  <.header><%= @page_title %></.header>
+  <.simple_form for={@form} phx-submit="save">
+    <.input field={@form[:template_name]} label="Template Name" disabled={@live_action == :edit} />
+    <.input field={@form[:subject]} label="Subject" />
+    <.input type="textarea" field={@form[:text]} label="Text" />
+    <.input type="textarea" field={@form[:html]} label="Html" hidden />
+    <div
+      id="editor"
+      class="h-[400px] w-full border bg-gray-50 h-[400px] overflow-auto resize-y"
+      phx-hook="Editor"
+    >
+    </div>
+    <:actions>
+      <div>
+        <.button phx-click={JS.navigate(~p"/")}>Back</.button>
+        <.button phx-disable-with="Submitting....">Submit</.button>
+      </div>
+    </:actions>
+  </.simple_form>
+</div>
